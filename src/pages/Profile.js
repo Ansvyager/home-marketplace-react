@@ -15,7 +15,7 @@ const Profile = () => {
   const { email, name } = formData
   const onLogout = () => {
     auth.signOut()
-    navigate('/sign-in')
+    navigate('/')
   }
 const onSubmit = async ()=> {
   try {
