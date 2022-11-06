@@ -5,6 +5,7 @@ import visibilityIcon from '../assets/svg/visibilityIcon.svg'
 import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { db} from '../firebase.config'
 import {setDoc, doc, serverTimestamp} from 'firebase/firestore'
+import { toast } from 'react-toastify'
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false)
   const [formData, setFormData] = useState({
@@ -37,10 +38,10 @@ const SignUp = () => {
       formDataCopy.timestamp = serverTimestamp()
 
       await setDoc(doc(db, 'users', user.uid), formDataCopy)
-      
+
       navigate('/')
     } catch (error) {
-      console.log(error)
+      toast.error('Ada yang salah dengan pendaftarannya nih Hayu lohhh')
     }
   }
   return (
